@@ -1,0 +1,13 @@
+AddHandler fcgid-script .fcgi
+   <Files ~ (\.fcgi)>
+       SetHandler fcgid-script
+       Options +FollowSymLinks +ExecCGI
+   </Files>
+
+
+
+   Options +FollowSymlinks
+   RewriteEngine On
+   RewriteBase /
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteRule ^(.*)$ app.fcgi/$1 [QSA,L]
